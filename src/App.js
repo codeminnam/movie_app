@@ -1,54 +1,45 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
-const memILike = [{
-  id:1,
-  name: "조승연",
-  rating: 5
-},
-{
-  id:2,
-  name: "조유리",
-  rating: 4
-},
-{
-  id:3,
-  name: "김민주",
-  rating: 3
-},
-{
-  id:4,
-  name: "장원영",
-  rating: 3
-},
-{
-  id:5,
-  name: "김채원",
-  rating: 3
-},
-]
+class App extends React.Component {
+  constructor(props){
+    super(props);
+    console.log("constructor");
+  }
+  state = {
+    count: 0
+  };
 
-function Member({fav, rating}){
-return (
-<div>
-  <h1>I love {fav}</h1>
-  <h4>{rating} / 5</h4>
-</div>);
-}
+  add = () => {
+    this.setState(current => ({
+      count: current.count+1
+    }));
+  };
 
-Member.propTypes = {
-  fav: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired
-};
+  minus = () => {
+    this.setState(current => ({
+      count: current.count-1
+    }));
+  };
 
-function App() {
-  return (
-    <div className="App">
-      {memILike.map(mem=>(
-        <Member key={mem.id} fav={mem.name} rating={mem.rating}/>
-      ))}
-    </div>
-  );
+  componentDidMount(){
+    console.log("component rendered");
+  }
+
+  componentDidUpdate(){
+    console.log("just updated");
+  }
+
+  render(){
+    console.log("rendering");
+    return (
+      <div>
+        <h1>승연아 {this.state.count}</h1>
+        <button onClick={this.add} >add</button>
+        <button onClick={this.minus} >minus</button>
+      </div>
+    );
+  }
 }
 
 export default App;
