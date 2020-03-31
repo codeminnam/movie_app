@@ -8,6 +8,7 @@ class App extends React.Component {
     super(props);
     console.log("constructor");
   }
+
   state = {
     isLoading: true,
     movies: []
@@ -16,7 +17,7 @@ class App extends React.Component {
   getMovies = async() => {
     const {
       data:{
-        data:{ movies}
+        data:{ movies }
       }
     } = await axios.get("https://yts-proxy.now.sh/list_movies.json?sort_by=rating");
     console.log(movies);
@@ -30,13 +31,13 @@ class App extends React.Component {
   render(){
     const { isLoading, movies } = this.state;
     return (
-      <section class="container">
+      <section className="container">
         {isLoading ? (
-           <div class="loader">
-              <span class="loader__text">Loading....</span>
+           <div className="loader">
+              <span className="loader__text">Loading....</span>
           </div>
         ) : (
-          <div class="movies">
+          <div className="movies">
           {movies.map(movie =>(
             <Movie 
               key={movie.id} 
@@ -45,9 +46,11 @@ class App extends React.Component {
               summary={movie.summary} 
               poster={movie.medium_cover_image} 
               title={movie.title}
+              genres={movie.genres}
             />
           ))}
-          </div>)}
+          </div>
+        )}
       </section>
     );
   }
