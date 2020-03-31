@@ -1,7 +1,14 @@
 import React from "react";
+import "./About.css";
 
-function About(){
-    return <span>About this page: This page is for practicing React & Router</span>;
+function About(props){
+    console.log(props);
+    return (
+        <div className="about__container">
+            <span>Secret Sunshine (2007)</span>
+            <span>Lee Chang-dong</span>
+        </div>
+    );
 }
 
 export default About;
