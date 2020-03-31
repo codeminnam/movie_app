@@ -1,4 +1,5 @@
 import React from "react";
+import "./Detail.css";
 
 export default class extends React.Component{
     componentDidMount(){
@@ -11,7 +12,18 @@ export default class extends React.Component{
     render(){
         const {location} = this.props;
         if(location.state){
-        return <span>{location.state.title}</span>;
+        return (<div className="detail__container">
+            <h1>{location.state.title}</h1>
+            <p>{location.state.year}</p>
+            <ul className="detail__genres">
+                {location.state.genres.map((genre, index) => (
+                    <li key={index}>
+                        {genre}
+                    </li>
+                ))}
+            </ul>
+            <p>{location.state.summary}</p> 
+            </div>);
         }else{
             return null;
         }

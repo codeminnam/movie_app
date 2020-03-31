@@ -4,9 +4,6 @@ import Movie from "../components/Movie";
 import "./Home.css";
 
 class Home extends React.Component {
-  constructor(props){
-    super(props);
-  }
 
   state = {
     isLoading: true,
